@@ -11,7 +11,8 @@ class SiteController {
     }
     // phương thức show 
     search(req, res){
-        res.send(' SEARCH....... !!!!')
+        // res.send(' SEARCH....... !!!!')
+        res.render('search')
     }
 }
 
