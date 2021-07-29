@@ -5,6 +5,10 @@ const app = express();
 const handlebars  = require('express-handlebars'); // thư viện đọc html 
 const port= 5500;
 
+
+const db= require('./config/db')
+// connect db
+db.connect();
 const route= require('./routes'); // trỏ vào thư mục routes
 
 app.engine('hbs',handlebars({
