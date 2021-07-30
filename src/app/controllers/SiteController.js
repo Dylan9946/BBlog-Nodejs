@@ -1,24 +1,25 @@
 
 
 const BlogPost = require('../models/BlogPost');
+
+const {multiMogooseToObject} =require('../../util/mongoose')
+
+
 // phần này là function handler (controllers)
 class SiteController {
 
     // trang chủ của Site
-    // phương thức [GET] /Site
-    index(req, res){
 
-        // res.json({
-        //     name:'test'
-        // })
-        BlogPost.find({}, function (err, blogPosts) {
-            if(!err){
-                res.json(blogPosts);
-            } else 
-                res.status(400).json({error: "ERROR !!!"})
-          });
-          
-        // res.render("home")
+    // phương thức [GET] /Site
+    index(req, res,next){
+        // promise
+          BlogPost.find({})
+          .then(blogPosts => {
+            res.render('home',{
+                blogPosts: multiMogooseToObject(blogPosts) 
+             })
+          })
+          .catch(err => next())
     }
     // phương thức show 
     search(req, res){
