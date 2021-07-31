@@ -4,10 +4,14 @@
 
       {{#each blogPosts}}
     <div class="col-sm-4 col-lg-4">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top card-blog-item" src="{{this.imge}}" alt="Card image cap" />
+      <div class="card card-blog-items" style="width: 18rem;">
+        <a href="/blogs/{{this.slug}}">
+          <img class="card-img-top " src="{{this.imge}}" alt="Card image cap" />
+        </a>
         <div class="card-body">
-          <h5 class="card-title">{{this.name}}</h5>
+          <a href="/blogs/{{this.slug}}">
+            <h5 class="card-title">{{this.name}}</h5>
+          </a>
           <p class="card-text">{{this.descripton}}</p>
           <a href="#" class="btn btn-primary">View </a>
         </div>
