@@ -5,11 +5,14 @@ const Schema = mongoose.Schema;
 
 const BlogPost = new Schema({
 
-  name: String,
+  name: { type: String, required: true },
   description: String,
   image: String,
-  createdAt: { type: Date, default: Date.now },
-  updateCreatedAt:{ type: Date, default: Date.now },
+  videoId: String,
+  // createdAt: { type: Date, default: Date.now },
+  // updateCreatedAt:{ type: Date, default: Date.now },
+},{
+  timestamps: true, // tự thêm tg 
 });
 
 // const MyModel = mongoose.model('ModelName', mySchema);

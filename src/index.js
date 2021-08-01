@@ -18,6 +18,12 @@ app.engine('hbs',handlebars({
 
 
 app.use(express.static(path.join(__dirname, 'public'))); // cấu hình file tĩnh=> từ localhost:3000 có thể truy cập trực tiếp vào các file trong public  
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
+app.use(express.json());
 app.set('view engine', 'hbs'); // đặt cho ứng dụng express là sưr dụng view engine là handlebars
 // app.use(morgan('combined'));
 app.set('views', path.join(__dirname, 'resources','views'));
