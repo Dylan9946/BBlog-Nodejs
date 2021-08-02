@@ -11,7 +11,6 @@ const db= require('./config/db')
 // connect db
 db.connect();
 const route= require('./routes'); // trỏ vào thư mục routes
-
 app.engine('hbs',handlebars({
     extname: 'hbs', // config đuôi file 'handlebars' =>'hbs'
     helpers:{ 

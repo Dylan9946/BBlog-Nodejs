@@ -9,7 +9,5 @@ const siteController= require('../app/controllers/SiteController')
 // các tuyến đường của news 
 // news/:slug
 router.use('/search',siteController.search);
-
-// news/
 router.use('/',siteController.index);
 module.exports =router;

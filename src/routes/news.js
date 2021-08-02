@@ -7,7 +7,7 @@ const router= express.Router();
 const newsController= require('../app/controllers/NewsController')
 
 // newsController.index
-// các tuyến đường của news 
+// các tuyến đường con của news 
 // news/:slug
 router.get('/:slug',newsController.show);
 

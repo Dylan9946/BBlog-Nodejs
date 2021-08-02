@@ -9,10 +9,11 @@ const {multiMogooseToObject} =require('../../util/mongoose')
 class SiteController {
 
     // trang chủ của Site
-
+ 
     // phương thức [GET] /Site
     index(req, res,next){
         // promise
+        // HIỂN THỊ RA BLOG CÓ TRONG DB
           BlogPost.find({})
           .then(blogPosts => {
             res.render('home',{

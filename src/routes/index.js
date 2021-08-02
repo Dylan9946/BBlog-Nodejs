@@ -9,13 +9,10 @@ const meRouter= require('./me')
 function route(app) {
 
     // NEWS
-    //   app.get("/news", (req, res) => {
-    //     res.render("news");
-    //   });
     app.use("/news" ,newRouter);
     app.use("/blogs" ,blogsRouter);
     app.use("/happy" ,happyRouter);  // relax
-    app.use("/me" ,meRouter);  // relax
+    app.use("/me" ,meRouter);  
     app.use("/" ,siteRouter);
     // HOME
 //     app.get("/", (req, res) => {

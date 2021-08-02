@@ -24,7 +24,7 @@ class BlogController {
  
   // [POST] /blog/store
   store(req, res, next) {
-    // req.body.image=`https://png.pngtree.com/png-clipart/20200701/original/pngtree-couple-of-bee-in-love-png-image_5390562.jpg`
+ // req.body.image=`https://png.pngtree.com/png-clipart/20200701/original/pngtree-couple-of-bee-in-love-png-image_5390562.jpg`
     const blogPost = new BlogPost(req.body); // tạo model mới
     // res.send('save')
     blogPost
@@ -33,8 +33,10 @@ class BlogController {
       .catch((err) => next(err));
   }
 
-  edit(req, res, next) {
+
+
      // [POST] /blog/:id/edit
+  edit(req, res, next) {
     BlogPost.findById( req.params.id)
       .then(blogpost => res.render("blogs/edit", {
         blogpost: mongooToObject(blogpost)
@@ -42,7 +44,7 @@ class BlogController {
       .catch(next);
   }
 
-      // [PUT] /blog/:id/
+  // [PUT] /blog/:id/
   update(req, res, next) {
     BlogPost.updateOne({ _id: req.params.id},req.body) // lấy cái nhận dc từ man hình updtae vào db
     .then(blogpost => res.redirect("/me/manage/blogs"))
