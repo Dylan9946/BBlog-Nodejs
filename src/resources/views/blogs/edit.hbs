@@ -1,0 +1,24 @@
+
+<div class="mt-4">
+    
+<form method="POST" action="/blogs/{{blogpost._id}}?_method=PUT"> 
+  <div class="form-group">
+    <label for="name">Tên blog </label>
+    <input type="text" class="form-control" value="{{blogpost.name}}" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="description">Mô tả</label>
+    <textarea type="text" class="form-control"    id="description" name="description">{{blogpost.description}}</textarea>
+  </div>
+  <div class="form-group">
+    <label for="image">Image</label>
+    <input type="text" class="form-control" value="{{blogpost.image}}"  id="image" name="image">
+  </div>
+  <div class="form-group">
+    <label for="videoId">Video</label>
+    <input type="text" class="form-control" value="{{blogpost.videoId}}"  id="videoId" name="videoId">
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+</div>
