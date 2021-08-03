@@ -12,6 +12,7 @@ const blogController= require('../app/controllers/BlogController')
 router.get('/create',blogController.create);
 router.post('/store',blogController.store);
 router.get('/edit/:id',blogController.edit);
+router.delete('/:id',blogController.delete);
 router.put('/:id', blogController.update);
 router.get('/:slug',blogController.show);
 

@@ -2,8 +2,7 @@
 
 <div class="mt-4">
     <h1>Mange Blogs</h1>
-</div>
-<table class="table">
+    <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -24,11 +23,69 @@
           
       </td>
        <td>
-          <a class="btn btn-link" href="">Xóa</a>
-          
+          <a class="btn btn-link"  href="" data-toggle="modal" data-target="#delete-blog-Modal" data-id ="{{this._id}}" >Xóa</a>  
       </td>
     </tr>
     {{/each}}
    
   </tbody>
 </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-blog-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel" >Delete blog</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this post?
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete-blog" type="button" class="btn btn-danger" >Delete</button>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!--hidden form delete --}}
+<form name="delete-blog-form" method="post"></form>
+<script>
+// khi click vào nut xóa -> lấy đc id của blog --> truyền id vào nút xóa  data-id ="{{this._id}}"
+// click vào nhân dc id
+
+// khi dom load xong thì exce
+document.addEventListener('DOMContentLoaded', function(){
+
+  // khi click vào nút xóa 
+  var blogId;
+    var btnDeleteBlog = document.getElementById('btn-delete-blog');
+  // lấy form có name là 'delete-blog-form'
+  var deleteForm = document.forms['delete-blog-form']
+    $('#delete-blog-Modal').on('show.bs.modal', function(event){
+    var button= $(event.relatedTarget);
+    blogId = button.data('id'); // lấy data-id trên dom 
+  })
+
+
+  btnDeleteBlog.onclick = function(){
+    // lấy id từ modal trên
+    // set actiom chuyển hướng vài truyềnid vào 
+  // set action cho form để chuyển hướng và
+    deleteForm.action = '/blogs/' + blogId +'?_method=DELETE' ;
+    // submit form ==> submit path --> chọc vào controller
+    deleteForm.submit();
+
+  }
+
+
+})
+
+
+
+</script>

@@ -37,7 +37,7 @@ class BlogController {
 
      // [POST] /blog/:id/edit
   edit(req, res, next) {
-    BlogPost.findById( req.params.id)
+    BlogPost.findById( req.params.id) 
       .then(blogpost => res.render("blogs/edit", {
         blogpost: mongooToObject(blogpost)
       }))
@@ -50,6 +50,13 @@ class BlogController {
     .then(blogpost => res.redirect("/me/manage/blogs"))
     .catch((err) => next(err));
   // res.json(req.body)
+ }
+
+//[DELETE] /blog/:id
+ delete(req, res, next) {
+  BlogPost.deleteOne({ _id: req.params.id})
+  .then(()=> res.redirect("back")) // xóa xong quay lại trang manage
+  .catch(next);
  }
 }
 
