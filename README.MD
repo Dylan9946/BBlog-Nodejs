@@ -1,14 +1,4 @@
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-#### MODULE 
-    - node-sass (combined file scss thành file css để link vào bài )
-#### MVC
-=======
-# Blog Web
-=======
 # Blog Web Project
 là project cá nhân với mục đích để học: *front-end* (javascript) và *back-end* (Nodejs, MongoDB) .
 
