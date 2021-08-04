@@ -8,7 +8,7 @@
       <th scope="col">#</th>
       <th scope="col">Name</th>
       <th scope="col">Description</th>
-      <th scope="col" colspan="2">Created At</th>
+      <th scope="col" colspan="2">Deleted At</th>
     </tr>
   </thead>
   <tbody>
@@ -18,13 +18,13 @@
       <th scope="row">{{sum @index 1}}</th> 
       <td>{{this.name}}</td>
       <td>{{this.description}}</td>
-      <td>{{this.createdAt}}</td>
+      <td>{{this.deletedAt}}</td>
       <td>
           <a class="btn btn-link btn-restore" data-id ="{{this._id}}" href="" >Restore</a>
           
       </td>
        <td>
-          <a class="btn btn-link"  href="" data-toggle="modal" data-target="#delete-blog-Modal" data-id ="{{this._id}}" >Xóa Vinh</a>  
+          <a class="btn btn-link"  href="" data-toggle="modal" data-target="#delete-blog-Modal" data-id ="{{this._id}}" >Xóa vĩnh viễn</a>  
       </td>
     </tr>
 
@@ -54,7 +54,7 @@
         Are you sure you want to delete this post?
       </div>
       <div class="modal-footer">
-        <button id="btn-delete-blog" type="button" class="btn btn-danger" >Xóa vĩnh viễn</button>
+        <button id="btn-delete-blog" type="button" class="btn btn-danger" >Xóa vĩnh viễn  </button>
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
