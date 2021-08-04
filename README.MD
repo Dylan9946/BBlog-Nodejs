@@ -11,11 +11,10 @@
 =======
 # Blog Web Project
 là project cá nhân với mục đích để học: *front-end* (javascript) và *back-end* (Nodejs, MongoDB) .
->>>>>>> c948d8036f2fc840e13ccc27848da10d14e35e08
+
 =======
 # Blog Web Project
 là project cá nhân với mục đích để học: *front-end* (javascript) và *back-end* (Nodejs, MongoDB) .
->>>>>>> refs/remotes/origin/master
 
 #### MODULE 
 #### Mô hình MVC
@@ -26,15 +25,13 @@ là project cá nhân với mục đích để học: *front-end* (javascript) v
 - Chỉnh sửa blog
 - Xóa blog
 
-<<<<<<< HEAD
+
 =======
 - Xóa blog (soft delete) 
     dùng plug in mongoose-delete
     - phương thức overide ->> phương thức lấy ra những thứ k bị xóa mềm (soft delete) 
 
 =======
->>>>>>> refs/remotes/origin/master
-
 ## Công nghệ sử dụng
 - Front-end: 
     - HTML, CSS
