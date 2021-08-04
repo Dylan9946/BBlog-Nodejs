@@ -21,6 +21,11 @@ là project cá nhân với mục đích để học: *front-end* (javascript) v
 - Chỉnh sửa blog
 - Xóa blog
 
+=======
+- Xóa blog (soft delete) 
+    dùng plug in mongoose-delete
+    - phương thức overide ->> phương thức lấy ra những thứ k bị xóa mềm (soft delete) 
+
 
 ## Công nghệ sử dụng
 - Front-end: 

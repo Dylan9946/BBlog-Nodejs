@@ -54,10 +54,31 @@ class BlogController {
 
 //[DELETE] /blog/:id
  delete(req, res, next) {
-  BlogPost.deleteOne({ _id: req.params.id})
+  BlogPost.delete({ _id: req.params.id})
   .then(()=> res.redirect("back")) // xóa xong quay lại trang manage
   .catch(next);
  }
+
+
+// [PATCH] /blog/restore:id/
+restore(req, res, next) {
+  BlogPost.restore({ _id: req.params.id}) // restore blog 
+  .then(()=> res.redirect("back")) 
+  .catch(next);
+ }
+
+
+ // xóa mạnh tay
+ forceDelete(req, res, next) {
+  BlogPost.deleteOne({ _id: req.params.id}) //xóa vĩnh viễn
+  .then(()=> res.redirect("back")) 
+  .catch(next);
+ }
+
+
+
+
+ 
 }
 
 module.exports = new BlogController(); // export ra ngoài để thằng khác import

@@ -11,6 +11,7 @@ const meController= require('../app/controllers/meController')
 // news/:slug
 router.get('/manage/blogs',meController.manageBlogs);
 // router.get('/blog/edit/',meController.edit);
+router.get('/trash/blogs',meController.trashBlogs);
 
 
 

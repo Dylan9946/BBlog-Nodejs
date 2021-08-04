@@ -2,8 +2,10 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-var slug = require('mongoose-slug-generator'); // tự động thêm slug vào
-mongoose.plugin(slug);
+const slug = require('mongoose-slug-generator'); // tự động thêm slug vào
+const mongoose_delete = require('mongoose-delete'); // dùng thư viện dể soft delete
+
+
 const BlogPost = new Schema({
 
   name :{ type: String, required: true },
@@ -16,6 +18,12 @@ const BlogPost = new Schema({
 },{
   timestamps: true, // tự thêm tg 
 });
+
+// add plugin 
+mongoose.plugin(slug);
+BlogPost.plugin(mongoose_delete , {  // soft delete
+   overrideMethods: 'all',//phương thức lấy ra những thứ k bị xóa mềm (soft delete) 
+  deleteAt: true });// tự thêm field delete at
 
 // const MyModel = mongoose.model('ModelName', mySchema);
 module.exports =mongoose.model('Blogpost',BlogPost)

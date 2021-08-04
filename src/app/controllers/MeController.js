@@ -18,7 +18,17 @@ class meController {
              })
           )
           .catch(err => next())
-        // res.render('me/manage-Blogs')
+    }
+
+   // [GET] me/trash/blogs
+    trashBlogs(eq, res,next){
+      BlogPost.findDeleted({}) // tìm blog đã xóa để vào giao diện
+      .then(blogpost =>  res.render('me/trash-blogs',{
+            blogpost: multiMogooseToObject(blogpost) 
+         })
+      )
+      .catch(err => next())
+
     }
 }
 

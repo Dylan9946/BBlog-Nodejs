@@ -13,9 +13,10 @@ router.get('/create',blogController.create);
 router.post('/store',blogController.store);
 router.get('/edit/:id',blogController.edit);
 router.delete('/:id',blogController.delete);
+router.delete('/force/:id',blogController.forceDelete);
+router.patch('/restore/:id',blogController.restore);
 router.put('/:id', blogController.update);
 router.get('/:slug',blogController.show);
-
 
 
 
