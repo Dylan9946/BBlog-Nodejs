@@ -2,10 +2,6 @@
 # Blog Web Project
 là project cá nhân với mục đích để học: *front-end* (javascript) và *back-end* (Nodejs, MongoDB) .
 
-=======
-# Blog Web Project
-là project cá nhân với mục đích để học: *front-end* (javascript) và *back-end* (Nodejs, MongoDB) .
-
 #### MODULE 
 #### Mô hình MVC
 ### MongoDB
