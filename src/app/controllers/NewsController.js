@@ -2,6 +2,7 @@
 
 
 // phần này là function handler (controllers)
+//   controller sẽ xử lsy đưa ra views
 class NewsController {
 
     // trang chủ của news

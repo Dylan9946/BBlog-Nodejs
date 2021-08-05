@@ -47,15 +47,11 @@ class meController {
     }
 
 
-
-
-
-
    // [GET] me/trash/blogs
     trashBlogs(eq, res,next){
       BlogPost.findDeleted({}) // tìm blog đã xóa để vào giao diện
       .then(blogpost =>  res.render('me/trash-blogs',{
-            blogpost: multiMogooseToObject(blogpost) 
+            blogpost: multiMogooseToObject(blogpost)  // đẩy blogpost ra view 
          })
       )
       .catch(err => next())

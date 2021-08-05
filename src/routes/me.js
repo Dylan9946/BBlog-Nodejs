@@ -6,8 +6,7 @@ const router= express.Router();
 
 const meController= require('../app/controllers/meController')
 
-// newsController.index
-// các tuyến đường của news 
+// các tuyến đường của 
 // news/:slug
 router.get('/manage/blogs',meController.manageBlogs);
 // router.get('/blog/edit/',meController.edit);
