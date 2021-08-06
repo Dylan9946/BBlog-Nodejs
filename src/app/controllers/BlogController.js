@@ -69,8 +69,25 @@ class BlogController {
 
     //// [PATCH] /blogs/handel-form-actions
     handelFormActions(req, res, next) {
-        BlogPost.deleteOne({_id: req.params.id}) //xóa vĩnh viễn
+      // res.json(req.body);
+       switch (req.body.action){
+           case 'Xóa vĩnh viễn': 
+                BlogPost.deleteOne({_id: {$in: req.body.blogItemCheckBox} }) //xóa tất cả blog có id nằm trong list
+                .then(() => res.redirect("back")).catch(next);
+               
+               break;
+            case 'Delete': 
+            BlogPost.delete({_id: {$in: req.body.blogItemCheckBox} }) //xóa tất cả blog có id nằm trong list
             .then(() => res.redirect("back")).catch(next);
+               
+               break;
+           case 'Restore':
+                BlogPost.restore({_id: {$in: req.body.blogItemCheckBox} }) // restore blog
+                .then(() => res.redirect("back")).catch(next);
+                break;
+        default:
+            res.json({message: 'action is invalid'});
+       }
 
     }
 

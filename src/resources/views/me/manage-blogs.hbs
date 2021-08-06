@@ -1,51 +1,100 @@
-<div class="mt-4">
-    <h1>Mange Blogs</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col" colspan="2">Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            <a href="/me/trash/blogs">
-                thùng rác ({{deletedCount}})</a>
-            {{#each blogpost}}
+<form
+    class='mt-4'
+    name="containerForm"
+    method="POST"
+    action="/blogs/handel-form-actions">
+    <div class="mt-4">
+        <h1>Mange Blogs</h1>
+        <table class="table">
+            <thead>
                 <tr>
-                    <th scope="row">{{sum @index 1}}</th>
-                    <td>{{this.name}}</td>
-                    <td>{{this.description}}</td>
-                    <td>{{this.createdAt}}</td>
-                    <td>
-                        <a class="btn btn-link" href="/blogs/edit/{{this._id}}">Edit
-                        </a>
+                    <th></th>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col" colspan="">Created At</th>
+                    <th scope="col" colspan="2" rowspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                    </td>
-                    <td>
-                        <a
-                            class="btn btn-link"
-                            href=""
-                            data-toggle="modal"
+                <a href="/me/trash/blogs">
+                    thùng rác ({{deletedCount}})</a>
+                {{!-- CHECKBOX ALL --}}
+                <div class="form-check d-flex align-items-center mb-4">
+                    <div class="">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            name="checkbox-all"
+                            id="defaultCheck1">
+                        <label class="form-check-label" for="checkbox-all">
+                            Chọn tất cả
+                        </label>
+                    </div>
+
+                    <div class="ml-4" style="">
+                        <input
+                            type="submit"
+                            name='action'
+                            value='Delete'
+                            type="button"
                             data-target="#delete-blog-Modal"
-                            data-id="{{this._id}}">Xóa</a>
-                    </td>
-                </tr>
+                            class="btn btn-danger action"
+                            disabled="disabled"></input>
 
-            {{else}}
-                <tr class="text-center">
-                    <td colspan="5">
-                        bạn chưa thêm blog nào
-                        <a href="/blogs/create">Thêm Blog</a>
-                    </td>
+                    </div>
 
-                </tr>
-            {{/each}}
+                </div>
+                {{#each blogpost}}
+                    <tr>
+                        <td>
 
-        </tbody>
-    </table>
-</div>
+                            <div class="form-check form-check-inline">
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    name="blogItemCheckBox[]"
+                                    value="{{this._id}}">
+                                <label class="form-check-label" for="blog-item-checkbox"></label>
+                            </div>
+
+                        </td>
+                        <th scope="row">{{sum @index 1}}</th>
+                        <td>{{this.name}}</td>
+                        <td>{{this.description}}</td>
+                        <td>{{this.createdAt}}</td>
+                        <td class="">
+                            <a class="btn btn-link" href="/blogs/edit/{{this._id}}">Edit
+                            </a>
+
+                        </td>
+                        <td>
+
+                            <a
+                                class="btn btn-link"
+                                href=""
+                                data-toggle="modal"
+                                data-target="#delete-blog-Modal"
+                                data-id="{{this._id}}">Xóa</a>
+                        </td>
+                    </tr>
+
+                {{else}}
+                    <tr class="text-center">
+                        <td >
+                            bạn chưa thêm blog nào
+                            <a href="/blogs/create">Thêm Blog</a>
+                        </td>
+
+                    </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+</form>
 
 <!-- Modal -->
 <div
@@ -77,8 +126,8 @@
 {{!--hidden form delete --}}
 <form name="delete-blog-form" method="POST"></form>
 <script>
-    // khi click vào nut xóa -> lấy đc id của blog --> truyền id vào nút xóa
-    // data-id ="{{this._id}}" click vào nhân dc id khi dom load xong thì exce
+    // khi click vào nut xóa -> lấy đc id của blog --> truyền id vào nút xóa data-id
+    // ="{{this._id}}" click vào nhân dc id khi dom load xong thì exce
     document
         .addEventListener('DOMContentLoaded', function () {
 
@@ -102,6 +151,51 @@
             }
 
             // Chức năng chọn tất cả ===============
+            var checkBoxAll = $("input[name='checkbox-all']")
+            var actionBtn = $('.action')
+            var blogItemCheckBox = $("input[name='blogItemCheckBox[]']")
+            var containerForm = $("form[name='containerForm']")
+           console.log(containerForm)
+
+            // click vào check all
+            checkBoxAll.change(function () {
+
+                console.log('hbchjbdcece')
+                var isCheckedAll = $(this).prop('checked') // trả về true false
+                blogItemCheckBox.prop('checked', isCheckedAll)
+                 renderCheckAllSubmitBtn()
+
+            });
+            // khi click vào nút check của mỗi blog
+            blogItemCheckBox.change(function () {
+                // kiểm tra số checkbox đang có có băngf với checkbox đã check k, néu bằng thì
+                // nút checkall dc enable
+                const isCheckedAll = blogItemCheckBox.length === $("input[name='blogItemCheckBox[]']:checked").length
+                console.log(isCheckedAll)
+                checkBoxAll.prop('checked', isCheckedAll)
+                renderCheckAllSubmitBtn()
+
+            });
+
+            // khi click submit xóa hoạc khôi phục 
+            actionBtn.click(function () {
+              containerForm.submit();
+            })
+            function renderCheckAllSubmitBtn(){
+                var checkedCount= $("input[name='blogItemCheckBox[]']:checked").length
+                if(checkedCount>0){
+                    actionBtn.attr('disabled',false)
+                } else {
+                      actionBtn.attr('disabled',true)
+                }
+
+            }
+
+
+
+
+
+
 
         })
 </script>

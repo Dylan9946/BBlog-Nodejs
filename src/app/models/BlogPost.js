@@ -22,8 +22,8 @@ const BlogPost = new Schema({
 // add plugin 
 mongoose.plugin(slug);
 BlogPost.plugin(mongoose_delete , {  // soft delete
-   overrideMethods: 'all',//phương thức lấy ra những thứ k bị xóa mềm (soft delete) 
-  deleteAt: true });// tự thêm field delete at
+    overrideMethods: 'all',//phương thức lấy ra những thứ k bị xóa mềm (soft delete) 
+    deletedAt: true });// tự thêm field delete at
 
 // const MyModel = mongoose.model('ModelName', mySchema);
 module.exports =mongoose.model('Blogpost',BlogPost)
