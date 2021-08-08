@@ -4,10 +4,12 @@ const siteRouter= require('./site')
 const blogsRouter= require('./blogs')
 const happyRouter= require('./happy')
 const meRouter= require('./me')
+const blogApiRouter= require('../api/routes/blogsApi')
 
 function route(app) {
 
     // NEWS
+    app.use("/api/" ,blogApiRouter);
     app.use("/news" ,newRouter);
     app.use("/blogs" ,blogsRouter);
     app.use("/happy" ,happyRouter);  // relax

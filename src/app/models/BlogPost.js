@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator'); // tự động thêm slug vào
 const mongoose_delete = require('mongoose-delete'); // dùng thư viện dể soft delete
 
-
 const BlogPost = new Schema({
 
   name :{ type: String, required: true },
