@@ -8,7 +8,7 @@ async function connect() {
       useUnifiedTopology: true,
       useFindAndModify: false,
       useCreateIndex: true,
-    });
+    })
     console.log("Connected DB Successfully");
   } catch(error) {
     console.log("Connected Fail");

@@ -8,6 +8,7 @@ const blogControllerApi = require('../controllers/BlogControllerApi');
 
 
  router.get('/blogs', blogControllerApi.show);
+ router.post('/blogs', blogControllerApi.create);
 // newsController.index các tuyến đường của news news/:slug
 // router.get('/create', blogController.create);
 // router.post('/store', blogController.store);

@@ -1,5 +1,4 @@
 const BlogPost = require("../../app/models/BlogPost");
-
 const {mongooToObject} = require("../../util/mongoose");
 
 
@@ -9,6 +8,8 @@ const {mongooToObject} = require("../../util/mongoose");
 
 
 class BlogControllerApi{
+
+    //[GET] /api/blogs
     show(req, res, next){
     //    console.log("connected")
        BlogPost.find()
@@ -17,6 +18,22 @@ class BlogControllerApi{
            message: "error"
        })
     }
+
+    //[POST] /api/blogs
+    // thêm 1 bài viết với [POST] /blog/store
+    create(req, res, next) {
+        // req.body.image=`https://png.pngtree.com/png-clipart/20200701/original/pngtree
+        // -couple-of-bee-in-love-png-image_5390562.jpg`
+        const blogPost = new BlogPost(req.body); // tạo model mới
+        // res.send('save')
+        blogPost
+            .save()
+            .then(() => res.json(blogPost))
+            .catch((err) => next(err));
+            console.log(req.body.description)
+    }
+
+
 }
 
 
