@@ -2,11 +2,6 @@ const BlogPost = require("../../app/models/BlogPost");
 const {mongooToObject} = require("../../util/mongoose");
 
 
-
-
-
-
-
 class BlogControllerApi{
 
     //[GET] /api/blogs
@@ -41,7 +36,7 @@ class BlogControllerApi{
 
 
 
-// phần này là function handler (controllers)
+// // phần này là function handler (controllers)
 // class BlogController {
 //     // phương thức show [GET] /blog/:slug
 //     show(req, res, next) {

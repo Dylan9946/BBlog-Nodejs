@@ -4,7 +4,7 @@ const morgan= require('morgan');
 const app = express();
 const handlebars  = require('express-handlebars'); // thư viện đọc html 
 const methodOverride = require('method-override') // method -override khi submit form với pthuc la delete hay put ,patch 
-const port= 5500;
+const port= 8888;
 
 const db= require('./config/db')
 const route= require('./routes'); // trỏ vào thư mục routes
