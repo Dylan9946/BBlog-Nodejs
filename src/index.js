@@ -36,3 +36,8 @@ app.set('views', path.join(__dirname, 'resources','views'));
 route(app); //chỏ vào file index.js trong routes, route do routes/index.js export ra để khơi tạo
 
 app.listen(port, ()=>console.log(`--Server Tui đang chạy port ${port}--`));
+
+// ###
+// - khi start 1 web server
+//     đầu tiên nó sẽ trỏ vào entry point là file index.js, file index dc thực thi và dc nạp vào ram --> chọc vào routes -> gọi tới controller và điều hướng trang
+ 
