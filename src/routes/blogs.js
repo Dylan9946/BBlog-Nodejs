@@ -14,7 +14,6 @@ router.put('/:id', blogController.update); //sửa post
 router.delete('/:id', blogController.delete); // xóa post
 router.delete('/for ce/:id', blogController.forceDelete);
 router.patch('/restore/:id', blogController.restore);
-
 router.get('/:slug', blogController.show);
 
 module.exports = router;

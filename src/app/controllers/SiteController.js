@@ -9,7 +9,6 @@ const {multiMogooseToObject} =require('../../util/mongoose')
 class SiteController {
 
     // trang chủ của Site
- 
     // phương thức [GET] /Site
     index(req, res,next){
         // promise
