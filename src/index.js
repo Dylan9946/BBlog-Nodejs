@@ -38,8 +38,8 @@ app.set("views", path.join(__dirname, "resources", "views"));
 //  routes init
 route(app); //chỏ vào file index.js trong routes, route do routes/index.js export ra để khơi tạo
 
-// const port = process.env.PORT || 8888;
-// app.listen(port, () => console.log(`--Server Tui đang chạy port ${port}--`));
+const port = process.env.PORT || 8888;
+app.listen(port, () => console.log(`--Server Tui đang chạy port ${port} nè --`));
 
 // ###
 // - khi start 1 web server
